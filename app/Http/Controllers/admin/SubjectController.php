@@ -20,7 +20,9 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return view('admin.subject.createsubject');
     }
 
     /**
@@ -28,7 +30,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -36,7 +38,10 @@ class SubjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
+        return view('admin.subject.showsubject');
+
     }
 
     /**
@@ -44,7 +49,11 @@ class SubjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+
+
+        return view('admin.subject.editsubject');
+
     }
 
     /**

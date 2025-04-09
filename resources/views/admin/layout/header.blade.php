@@ -18,9 +18,9 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="{{asset('assets1/img/sidebar-5.jpg')}}">
+        <div class="sidebar" data-image="{{asset('assets1/img/sidebar-2.jpg')}}">
             <div class="sidebar-wrapper">
-                <div class="logo">
+                <div class="logo" >
                         Creative Tim
                 </div>
                 <ul class="nav">

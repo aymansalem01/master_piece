@@ -20,7 +20,9 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return view('admin.video.createvideo');
     }
 
     /**
@@ -36,7 +38,9 @@ class VideoController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
+        return view('admin.video.showvideo');
     }
 
     /**
@@ -44,7 +48,9 @@ class VideoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+
+        return view('admin.video.editvideo');
     }
 
     /**

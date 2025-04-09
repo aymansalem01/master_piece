@@ -20,7 +20,9 @@ class User_adminController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return view('admin.user.createuser');
     }
 
     /**
@@ -28,7 +30,10 @@ class User_adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        return view('admin.user.createuser');
+
     }
 
     /**
@@ -36,7 +41,10 @@ class User_adminController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
+        return view('admin.user.showuser');
+
     }
 
     /**
@@ -44,7 +52,10 @@ class User_adminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+
+        return view('admin.user.edituser');
+
     }
 
     /**

@@ -20,7 +20,9 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return view('admin.coupon.createcoupon');
     }
 
     /**
@@ -36,7 +38,10 @@ class CouponController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
+        return view('admin.coupon.showcoupon');
+
     }
 
     /**
@@ -44,7 +49,10 @@ class CouponController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+
+        return view('admin.coupon.editcoupon');
+
     }
 
     /**

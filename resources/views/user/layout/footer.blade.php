@@ -1,14 +1,13 @@
-
-
 <footer class=" text-white py-4">
     <div class="container">
         <div class="row align-items-center">
             <!-- Subscription Section -->
             <div class="col-lg-6 pt-3">
-                <h4 style="color: white;" >Subscribe for All News</h4>
+                <h4 style="color: white;">Subscribe for All News</h4>
                 <div class="d-flex">
                     <form action="" class="d-flex w-100">
-                        <input type="email" name="email" class="form-control rounded-2 px-4 mx-1" placeholder="Enter your email" required />
+                        <input type="email" name="email" class="form-control rounded-2 px-4 mx-1"
+                            placeholder="Enter your email" required />
                         <button type="submit" class="btn btn-light rounded-5 px-3" style="color: #7a6ad8">
                             Subscribe
                         </button>
@@ -34,15 +33,16 @@
             <p class="mb-0">&copy; 2025 YourPlatform. All Rights Reserved.</p>
         </div>
     </div>
-  </footer>
+</footer>
 
-      <!-- Scripts -->
-      <!-- Bootstrap core JavaScript -->
-      <script src="{{ asset ('assets/vendor/jquery/jquery.min.js')}}"></script>
-      <script src="{{ asset ('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-      <script src="{{ asset ('assets/js/isotope.min.js')}}"></script>
-      <script src="{{ asset ('assets/js/owl-carousel.js')}}"></script>
-      <script src="{{ asset ('assets/js/counter.js')}}"></script>
-      <script src="{{ asset ('assets/js/custom.js')}}"></script>
-    </body>
-  </html>
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/isotope.min.js') }}"></script>
+<script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
+<script src="{{ asset('assets/js/counter.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+</body>
+
+</html>
