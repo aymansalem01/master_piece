@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('visa_no');
-            $table->string('visa_name');
-            $table->integer('visa_code');
+            $table->enum('payment_type',['coupon','visa']);
             $table->date('payment_date');
             $table->timestamps();
         });

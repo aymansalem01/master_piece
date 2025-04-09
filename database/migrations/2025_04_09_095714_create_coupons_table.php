@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code');
+            $table->foreignId('classe_id')->constrained()->onDelete('cascade');
             $table->date('use_at')->nullable();
             $table->timestamps();
         });

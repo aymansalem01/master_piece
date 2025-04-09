@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('visainfos', function (Blueprint $table) {
             $table->id();
-            $table->string('naem');
-            $table->string('image')->nullable();
-            $table->integer('price');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('visa_no');
+            $table->string('visa_name');
+            $table->integer('visa_code');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('visainfos');
     }
 };

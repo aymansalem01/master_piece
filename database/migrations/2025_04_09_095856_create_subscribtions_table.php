@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('vr',['yes','no'])->default('no');
             $table->date('start_date');
             $table->date('end_date');
+            $table->foreignId('payment_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
