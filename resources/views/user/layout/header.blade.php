@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-scholar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{asset('assets/css/chatbot.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
@@ -57,7 +58,7 @@
                                 <a href="{{ route('contact') }}">Feedback</a>
                             </li>
                             <li>
-                                <a href="#contact">Register Now!</a>
+                                <a href="{{route('sign')}}">Register Now!</a>
                             </li>
                         </ul>
                         <a class="menu-trigger">

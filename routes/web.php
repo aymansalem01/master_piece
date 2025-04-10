@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\SubjectController;
 use App\Http\Controllers\admin\User_adminController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\VrController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsersideController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -30,3 +31,8 @@ Route::get('/course', [UsersideController::class, 'course'])->name('course');
 Route::get('/contact', [UsersideController::class, 'contact'])->name('contact');
 Route::get('/vrs', [UsersideController::class, 'vr'])->name('vr');
 Route::get('/subject', [UsersideController::class, 'subject'])->name('subject');
+Route::view('login','login')->name('log');
+Route::view('signup','signup')->name('sign');
+Route::post('signup',[AuthController::class,'signup'])->name('signup');
+Route::post('login' , [AuthController::class,'login'])->name('login');
+

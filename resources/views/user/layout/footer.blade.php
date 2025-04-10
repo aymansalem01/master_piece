@@ -43,6 +43,7 @@
 <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
 <script src="{{ asset('assets/js/counter.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="{{asset('assets/js/chatbot.js')}}" ></script>
 </body>
 
 </html>
