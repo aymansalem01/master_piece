@@ -3,7 +3,7 @@
     <!-- End Navbar -->
     <div class="content">
         <div class="text-end mb-3">
-            <a class="btn adduser" href="#">
+            <a class="btn adduser" href="{{route('user.create')}}">
                 <i class="fas fa-user-plus"></i> Add user
             </a>
         </div>
