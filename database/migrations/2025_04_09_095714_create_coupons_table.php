@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->foreignId('classe_id')->constrained()->onDelete('cascade');
+            $table->boolean('vr_access')->default(false);
             $table->date('use_at')->nullable();
             $table->timestamps();
         });

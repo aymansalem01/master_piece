@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('naem');
+            $table->string('name');
             $table->string('image')->nullable();
             $table->integer('price');
             $table->timestamps();

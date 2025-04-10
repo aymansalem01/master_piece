@@ -9,4 +9,14 @@ class Coupon extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function clase()
+    {
+        return $this->belongsTo(Classe::class,'classe_id');
+    }
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
 }

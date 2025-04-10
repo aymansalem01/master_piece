@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('link');
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
-            $table->enum('have_game',['yes','no'])->default('no');
+            $table->string('video_link');
+            $table->foreignId('subject_id')->nullable()->constrained()->nullOnDelete();
+            $table->boolean('has_game')->default(false);
+            $table->string('game_link')->nullable();
             $table->timestamps();
         });
     }

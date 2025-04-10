@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('payment_type',['coupon','visa']);
+            $table->foreignId('coupon_id')->nullable()->constrained()->nullOnDelete();
             $table->date('payment_date');
             $table->timestamps();
         });

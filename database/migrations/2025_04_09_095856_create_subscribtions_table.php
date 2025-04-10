@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('classe_id')->constrained()->onDelete('cascade');
-            $table->enum('vr',['yes','no'])->default('no');
+            $table->boolean('vr_access')->default(false);
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('payment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('payment_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
