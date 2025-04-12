@@ -23,7 +23,7 @@ class User_adminController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
             'phone_number' => 'required|regex:/^07[0-9]{8}$/',
         ]);
         User::create([
@@ -53,18 +53,16 @@ class User_adminController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'phone_number' => 'required|regex:/^07[0-9]{8}$/',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
         ]);
-        $user = User::find($id);
-        if ($user->name != $request->name || $user->phone_number != $request->phone_number) {
-            $user->update([
+        User::find($id)->update([
                 'name' => $request->name,
-                'phone_number' => $request->phone_number,
-                'password' => Hash::make($request->password)
+                // 'phone_number' => $request->phone_number,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role
             ]);
 
-            return redirect()->back()->with(['message' => 'Update successful']);
-        }
 
         return redirect()->back()->with(['message' => 'No changes detected']);
     }

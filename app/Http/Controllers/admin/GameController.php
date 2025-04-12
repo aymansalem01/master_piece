@@ -10,8 +10,9 @@ class GameController extends Controller
 {
     public function index()
     {
-        $videos = Video::where('has_game','=','true')->get();
+        $videos = Video::where('has_game','!=',0)->get();
         return view('admin.game.games',['videos' => $videos]);
     }
+    
 
 }

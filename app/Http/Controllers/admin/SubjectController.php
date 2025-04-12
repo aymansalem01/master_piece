@@ -19,7 +19,6 @@ class SubjectController extends Controller
     public function create()
     {
         $classes = Classe::get();
-
         return view('admin.subject.create',['classes' => $classes]);
     }
 
@@ -32,7 +31,7 @@ class SubjectController extends Controller
         ]);
         $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $image_path);
-        Subject::created([
+        Subject::create([
             'name' => $request->name,
             'image' => $image_path,
             'classe_id' => $request->class
@@ -51,7 +50,7 @@ class SubjectController extends Controller
     {
         $subject = Subject::with('classe')->find($id);
         $classes = Classe::get();
-        return view('admin.subject.edit',['subject'=>$subject,'clases'=>$classes]);
+        return view('admin.subject.edit',['subject'=>$subject,'classes'=>$classes]);
 
     }
 
@@ -59,12 +58,19 @@ class SubjectController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'mimes:jpg,jpeg,png|max:2048',
             'class' => 'required'
         ]);
-        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $image_path);
-        Subject::find($id)->updated([
+        $subject = Subject::find($id);
+
+        if($request->image != null){
+            $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $image_path);
+        }else{
+            $image_path = $subject->image;
+        }
+
+        $subject->update([
             'name' => $request->name,
             'image' => $image_path,
             'classe_id' => $request->class

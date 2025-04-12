@@ -9,13 +9,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="col-md-4 col-sm-6 mb-4 " >
                             @foreach ($classes as $class )
                             <div class="review-card">
+                                    <img src="{{asset('images/'.$class->image)}}" alt="">
+                                <div>
                                 <h5 class="category-name">{{$class->name}}</h5>
-                                <p></p>
+                                <p> <strong>{{$class->price}}$</strong> </p>
                                 <div class="action-buttons">
-                                    <a href="{{route('class.edit',$calss->id)}}" class="edit-btn"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="{{route('class.edit',$class->id)}}" class="edit-btn"><i class="fa-solid fa-pen"></i></a>
                                     <form action="{{route('class.destroy',$class->id)}}" method="post" >
                                         @csrf
                                         @method('delete')
@@ -23,8 +25,8 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
                             @endforeach
-
                         </div>
                     </div>
                 </div>

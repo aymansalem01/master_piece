@@ -28,16 +28,16 @@ class VideoController extends Controller
             'video_link' => 'required',
             'subject' => 'required',
         ]);
-        $has_game = false;
+        $has_game = 0;
         if(isset($request->game_link)){
-            $has_game = true;
+            $has_game = 1;
         }
         $game_link = null;
         if(isset($request->game_link))
         {
             $game_link = $request->video_link;
         }
-        Video::created([
+        Video::create([
             'title' => $request->title,
             'video_link' => $request->video_link,
             'subject_id' => $request->subject,

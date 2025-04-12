@@ -32,6 +32,7 @@ public function subscribtion()
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**

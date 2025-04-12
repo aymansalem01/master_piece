@@ -106,12 +106,11 @@
 
         <div>
             <label for="role">Role</label>
-            <select name="role" id="role" class="form-select mb-3" required>
-                <option disabled>Select Role</option>
-                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                <option value="parent" {{ $user->role == 'parent' ? 'selected' : '' }}>Parent</option>
-            </select>
+                <select name="role" class="form-select mb-3" required>
+                    <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="parent" {{ old('role', $user->role) == 'parent' ? 'selected' : '' }}>Parent</option>
+                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+                </select>
             @error('role')
                 <div class="custom-error"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>
             @enderror
