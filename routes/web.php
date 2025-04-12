@@ -37,3 +37,15 @@ Route::view('signup','signup')->name('sign');
 Route::post('signup',[AuthController::class,'signup'])->name('signup');
 Route::post('login' , [AuthController::class,'login'])->name('login');
 
+Route::middleware(['auth' , 'role:user'])->group(function () {
+
+
+});
+Route::middleware(['auth' , 'role:admin'])->group(function () {
+
+
+});
+Route::middleware(['auth' , 'role:parent'])->group(function () {
+
+
+});
