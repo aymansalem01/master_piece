@@ -54,8 +54,9 @@ class VideoController extends Controller
     }
     public function edit(string $id)
     {
-        $videos = Video::get();
-        return view('admin.video.edit',['videos' => $videos]);
+        $videos = Video::find($id);
+        $subjects = Subject::get();
+        return view('admin.video.edit',['videos' => $videos, 'subjects' => $subjects]);
     }
 
     public function update(Request $request, string $id)

@@ -47,7 +47,7 @@ class CouponController extends Controller
     {
         $coupon = Coupon::find($id);
         $classes = Classe::get();
-        return view('admin.coupon.edit',['classes' => $classes]);
+        return view('admin.coupon.edit',['classes' => $classes, 'coupon'=>$coupon]);
 
     }
 

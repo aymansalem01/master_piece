@@ -51,7 +51,8 @@ class VrController extends Controller
     public function edit(string $id)
     {
         $vr = Vr::with('subject')->find($id);
-        return view('admin.vr.edit',['vr'=>$vr]);
+        $subjects = Subject::get();
+        return view('admin.vr.edit',['vr'=>$vr,'subjects' => $subjects]);
     }
 
     public function update(Request $request, string $id)

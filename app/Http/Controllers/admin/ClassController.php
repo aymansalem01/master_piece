@@ -47,8 +47,8 @@ class ClassController extends Controller
 
     public function edit(string $id)
     {
-
-        return view('admin.classe.edit');
+        $class = Classe::find($id);
+        return view('admin.classe.edit',['class' => $class]);
 
     }
 

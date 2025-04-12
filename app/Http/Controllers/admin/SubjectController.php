@@ -43,17 +43,14 @@ class SubjectController extends Controller
     public function show(string $id)
     {
         $subject =  Subject::with('classe')->find($id);
-
         return view('admin.subject.show',['subject' => $subject]);
 
     }
 
     public function edit(string $id)
     {
-
         $subject = Subject::with('classe')->find($id);
         $classes = Classe::get();
-
         return view('admin.subject.edit',['subject'=>$subject,'clases'=>$classes]);
 
     }
