@@ -22,7 +22,7 @@ class CouponController extends Controller
     {
 
 
-        return view('admin.coupon.createcoupon');
+        return view('admin.coupon.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class CouponController extends Controller
     {
 
 
-        return view('admin.coupon.showcoupon');
+        return view('admin.coupon.show');
 
     }
 
@@ -51,7 +51,7 @@ class CouponController extends Controller
     {
 
 
-        return view('admin.coupon.editcoupon');
+        return view('admin.coupon.edit');
 
     }
 

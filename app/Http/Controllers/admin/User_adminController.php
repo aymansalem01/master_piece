@@ -22,7 +22,7 @@ class User_adminController extends Controller
     {
 
 
-        return view('admin.user.createuser');
+        return view('admin.user.create');
     }
 
     /**
@@ -32,7 +32,7 @@ class User_adminController extends Controller
     {
 
 
-        return view('admin.user.createuser');
+        return view('admin.user.create');
 
     }
 
@@ -43,7 +43,7 @@ class User_adminController extends Controller
     {
 
 
-        return view('admin.user.showuser');
+        return view('admin.user.show');
 
     }
 
@@ -54,7 +54,7 @@ class User_adminController extends Controller
     {
 
 
-        return view('admin.user.edituser');
+        return view('admin.user.edit');
 
     }
 

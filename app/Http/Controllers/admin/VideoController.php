@@ -22,7 +22,7 @@ class VideoController extends Controller
     {
 
 
-        return view('admin.video.createvideo');
+        return view('admin.video.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class VideoController extends Controller
     {
 
 
-        return view('admin.video.showvideo');
+        return view('admin.video.show');
     }
 
     /**
@@ -50,7 +50,7 @@ class VideoController extends Controller
     {
 
 
-        return view('admin.video.editvideo');
+        return view('admin.video.edit');
     }
 
     /**

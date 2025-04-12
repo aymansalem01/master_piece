@@ -23,7 +23,7 @@ class VrController extends Controller
 
 
 
-        return view('admin.vr.createvr');
+        return view('admin.vr.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class VrController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.vr.showvr');
+        return view('admin.vr.show');
 
     }
 
@@ -50,7 +50,7 @@ class VrController extends Controller
     {
 
 
-        return view('admin.vr.editvr');
+        return view('admin.vr.edit');
 
     }
 

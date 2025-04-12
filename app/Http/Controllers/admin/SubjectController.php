@@ -22,7 +22,7 @@ class SubjectController extends Controller
     {
 
 
-        return view('admin.subject.createsubject');
+        return view('admin.subject.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class SubjectController extends Controller
     {
 
 
-        return view('admin.subject.showsubject');
+        return view('admin.subject.show');
 
     }
 
@@ -52,7 +52,7 @@ class SubjectController extends Controller
 
 
 
-        return view('admin.subject.editsubject');
+        return view('admin.subject.edit');
 
     }
 

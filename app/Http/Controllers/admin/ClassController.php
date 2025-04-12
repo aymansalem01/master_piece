@@ -21,7 +21,7 @@ class ClassController extends Controller
     public function create()
     {
 
-        return view('admin.classe.createclass');
+        return view('admin.classe.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class ClassController extends Controller
     public function show(string $id)
     {
 
-        return view('admin.classe.showclass');
+        return view('admin.classe.show');
     }
 
     /**
@@ -47,7 +47,7 @@ class ClassController extends Controller
     public function edit(string $id)
     {
 
-        return view('admin.classe.editclass');
+        return view('admin.classe.edit');
 
     }
 
