@@ -107,7 +107,7 @@
             <div>
                 <label for="role">Role</label>
                 <select name="role" id="role" class="form-select mb-3" required>
-                    <option value="" disabled selected>Select Role</option>
+                    <option  disabled selected>Select Role</option>
                     <option value="admin">Admin</option>
                     <option value="user">user</option>
                     <option value="parent">parent</option>

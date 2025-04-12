@@ -2,70 +2,90 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Video;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VideoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view ('admin.video.video');
+        $videos = Video::with('subject')->get();
+        return view ('admin.video.video',['videos' => $videos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-
-        return view('admin.video.create');
+        $subjects = Subject::get();
+        return view('admin.video.create',['subjects'=>$subjects]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'video_link' => 'required',
+            'subject' => 'required',
+        ]);
+        $has_game = false;
+        if(isset($request->game_link)){
+            $has_game = true;
+        }
+        $game_link = null;
+        if(isset($request->game_link))
+        {
+            $game_link = $request->video_link;
+        }
+        Video::created([
+            'title' => $request->title,
+            'video_link' => $request->video_link,
+            'subject_id' => $request->subject,
+            'has_game' => $has_game,
+            "game_link" => $game_link
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-
-
-        return view('admin.video.show');
+        $video = Video::with('subject')->find($id);
+        return view('admin.video.show',['video' => $video]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-
-
-        return view('admin.video.edit');
+        $videos = Video::get();
+        return view('admin.video.edit',['videos' => $videos]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'video_link' => 'required',
+            'subject' => 'required',
+        ]);
+        $has_game = false;
+        if(isset($request->game_link)){
+            $has_game = true;
+        }
+        $game_link = null;
+        if(isset($request->game_link))
+        {
+            $game_link = $request->video_link;
+        }
+        Video::find($id)->updated([
+            'title' => $request->title,
+            'video_link' => $request->video_link,
+            'subject_id' => $request->subject,
+            'has_game' => $has_game,
+            "game_link" => $game_link
+        ]);
+        return $this->index();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Video::destroy($id);
+        return $this->index();
     }
 }

@@ -3,69 +3,69 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classe;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('admin.coupon.coupon');
+        $coupons = Coupon::with('classe')->get();
+        return view('admin.coupon.coupon',['coupons' => $coupons]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-
-        return view('admin.coupon.create');
+        $classes = Classe::get();
+        return view('admin.coupon.create',['classes' => $classes]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code' => 'required | min:10 | max:10',
+            'class' => 'required',
+            'vr_access' => 'required'
+        ]);
+        Coupon::created([
+            'code' => $request->code,
+            'class_id' => $request->class,
+            'vr_access' => $request->vr_access
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-
-
-        return view('admin.coupon.show');
-
+        $coupon =  Coupon::with('classe')->find($id);
+        return view('admin.coupon.show',['coupon' => $coupon]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-
-
-        return view('admin.coupon.edit');
+        $coupon = Coupon::find($id);
+        $classes = Classe::get();
+        return view('admin.coupon.edit',['classes' => $classes]);
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'code' => 'required | min:10 | max:10',
+            'class' => 'required',
+            'vr_access' => 'required'
+        ]);
+        Coupon::find($id)->updated([
+            'code' => $request->code,
+            'class_id' => $request->class,
+            'vr_access' => $request->vr_access
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

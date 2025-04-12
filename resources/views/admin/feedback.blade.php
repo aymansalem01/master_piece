@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">feedback </h4>
+                        <h4 class="card-title">Feedback </h4>
                     </div>
                     <div class="card-body table-full-width table-responsive">
                         <table class="table table-hover table-striped">
@@ -14,15 +14,15 @@
                                 <th>ID</th>
                                 <th>email</th>
                                 <th>comment</th>
-                                <th>tools</th>
                             </thead>
                             <tbody>
+                                @foreach ($feedbacks as $feedback )
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Oud-Turnhout</td>
+                                    <td>{{$feedback->id}}</td>
+                                    <td>{{$feedback->email}}</td>
+                                    <td>{{$feedback->message}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -31,21 +31,21 @@
             <div class="col-md-12">
                 <div class="card strpied-tabled-with-hover">
                     <div class="card-header ">
-                        <h4 class="card-title">subscribe </h4>
+                        <h4 class="card-title">Subscribe </h4>
                     </div>
                     <div class="card-body table-full-width table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>
                                 <th>ID</th>
                                 <th>email</th>
-                                <th>tools</th>
                             </thead>
                             <tbody>
+                                @foreach ($subscribes as $subscribe )
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>Oud-Turnhout</td>
+                                    <td>{{ $subscribe->id}}</td>
+                                    <td>{{$subscribe->email}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

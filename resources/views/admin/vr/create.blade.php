@@ -108,9 +108,9 @@
                 <label for="subject">Subject</label>
                 <select name="subject" id="subject" class="form-select mb-3" required>
                     <option disabled selected>Select subject</option>
-                    {{-- @foreach( as )
-                    <option value="admin">Admin</option>
-                    @endforeach --}}
+                    @foreach($subjects as $subject )
+                    <option value="{{$subject->id}}">{{$subject->name}}</option>
+                    @endforeach
                 </select>
                 @error('subject')
                     <div class="custom-error"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>

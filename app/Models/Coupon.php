@@ -10,7 +10,7 @@ class Coupon extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function clase()
+    public function classe()
     {
         return $this->belongsTo(Classe::class,'classe_id');
     }

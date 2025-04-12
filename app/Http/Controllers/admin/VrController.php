@@ -2,71 +2,80 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Vr;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VrController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('admin.vr.vr');
+        $vrs = Vr:: with('subject')->get();
+        return view('admin.vr.vr',['vrs' => $vrs]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-
-
-        return view('admin.vr.create');
+        $subjects = Subject::get();
+        return view('admin.vr.create',['subjects' => $subjects]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'link' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'subject' => 'required'
+        ]);
+        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image_path);
+
+        Vr::create([
+            'title' => $request->title,
+            'link' => $request->link,
+            'image' => $image_path,
+            'subject_id' => $request->subject
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        return view('admin.vr.show');
-
+        $vr = Vr::with('subject')->find($id);
+        return view('admin.vr.show',['vr' =>$vr]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-
-
-        return view('admin.vr.edit');
-
+        $vr = Vr::with('subject')->find($id);
+        return view('admin.vr.edit',['vr'=>$vr]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'link' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'subject' => 'required'
+        ]);
+        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image_path);
+        Vr::find($id)->updated([
+            'title' => $request->title,
+            'link' => $request->link,
+            'image' => $image_path,
+            'subject_id' => $request->subject
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Vr::destroy($id);
+        return $this->index();
     }
 }

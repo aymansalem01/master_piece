@@ -98,9 +98,9 @@
                 <label for="class">Class</label>
                 <select name="class" id="class" class="form-select mb-3" required>
                     <option disabled selected>Select class</option>
-                    {{-- @foreach( as )
-                    <option value="admin">Admin</option>
-                    @endforeach --}}
+                    @foreach($classes as $class )
+                    <option value="{{$class->id}}">{{$class->name}}</option>
+                    @endforeach
                 </select>
                 @error('class')
                     <div class="custom-error"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>

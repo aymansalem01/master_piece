@@ -3,47 +3,48 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classe;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.classe.classes');
+        $classes = Classe::get();
+        return view('admin.classe.classes',['classes' => $classes ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
 
         return view('admin.classe.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'integer | required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image_path);
+
+        Classe::create([
+            'name' => $request->name ,
+            'price' => $request->price,
+            'image' => $image_path
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
 
         return view('admin.classe.show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
 
@@ -51,17 +52,25 @@ class ClassController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'integer | required',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048'
+        ]);
+
+        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $image_path);
+
+        Classe::find($id)->updated([
+            'name' => $request->name ,
+            'price' => $request->price,
+            'image' => $image_path
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

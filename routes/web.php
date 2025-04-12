@@ -22,6 +22,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('vr', VrController::class);
     Route::resource('class', ClassController::class);
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('payment', [AdminController::class, 'payment'])->name('payment');
 });
 
 Route::get('feedback', [AdminController::class, 'feedback'])->name('feedback');

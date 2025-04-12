@@ -61,6 +61,12 @@
                         </a>
                     </li>
                     <li>
+                        <a class="nav-link" href="{{ route ('payment')}}">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>payment</p>
+                        </a>
+                    </li>
+                    <li>
                         <a class="nav-link" href="{{ route('game.index')}}">
                             <i class="nc-icon nc-pin-3"></i>
                             <p>games</p>

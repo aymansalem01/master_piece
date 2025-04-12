@@ -2,75 +2,76 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class User_adminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.user.user');
+        $users = User::get();
+        return view('admin.user.user',['users' => $users]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-
-
         return view('admin.user.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-
-
-        return view('admin.user.create');
-
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+            'phone_number' => 'required|regex:/^07[0-9]{8}$/',
+        ]);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone_number' => $request->phone_number,
+            'role' => 'user'
+        ]);
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-
-
-        return view('admin.user.show');
+        $user = User::find($id);
+        return view('admin.user.show',['user' => $user]);
 
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-
-
-        return view('admin.user.edit');
-
+        $user = User::find($id);
+        return view('admin.user.edit',['user' => $user]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3',
+            'phone_number' => 'required|regex:/^07[0-9]{8}$/',
+            'password' => 'required|min:8|confirmed',
+        ]);
+        $user = User::find($id);
+        if ($user->name != $request->name || $user->phone_number != $request->phone_number) {
+            $user->update([
+                'name' => $request->name,
+                'phone_number' => $request->phone_number,
+                'password' => Hash::make($request->password)
+            ]);
+
+            return redirect()->back()->with(['message' => 'Update successful']);
+        }
+
+        return redirect()->back()->with(['message' => 'No changes detected']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+        return $this->index();
     }
 }

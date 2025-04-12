@@ -16,17 +16,19 @@
                                 <th>Vr access</th>
                                 <th>Start date</th>
                                 <th>End date</th>
-                                <th>tools</th>
+                                <th>payment id</th>
                             </thead>
                             <tbody>
+                                @foreach ($subscribtions as $subscribtion )
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                    <td>tools</td>
+                                    <td>{{$subscribtion->user->name}}</td>
+                                    <td>{{$subscribtion->classe->name}}</td>
+                                    <td>{{$subscribtion->vr_accesss}}</td>
+                                    <td>{{$subscribtion->start_date}}</td>
+                                    <td>{{$subscribtion->end_date}}</td>
+                                    <td>{{$subscribtion->payment_id}}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

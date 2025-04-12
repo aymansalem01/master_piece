@@ -24,12 +24,32 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Nigger</td>
-                                    <td>Oud-Turnhout</td>
+                                    @foreach ($users as $user )
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->role}}</td>
+                                    <td>
+                                        <div style="display: flex; gap:5px" class="d-flex">
+                                            <a href="{{route('user.show',$user->id)}}"
+                                                class="btn btn-sm btn-info me-2 iconsh">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{route('user.edit',$user->id)}}"
+                                                class="btn btn-sm btn-warning me-2 icone">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{route('user.destroy',$user->id)}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-danger delete-btn icond">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        </div>
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
