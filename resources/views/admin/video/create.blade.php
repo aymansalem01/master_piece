@@ -72,7 +72,7 @@
 
     <div class="form-container">
 
-        <h2>Create class</h2>
+        <h2>Add video</h2>
         <form action="{{ route('video.store') }}" method="POST">
             @csrf
             <input type="text" name="title" class="form-control mb-3" placeholder="Enter video title"
@@ -88,7 +88,7 @@
             @enderror
 
             <select name="subject" class="form-select mb-3" required>
-                <option value="" disabled selected>Select subject</option>
+                <option  disabled selected>Select subject</option>
                 {{-- @foreach( as )
                 <option value="admin">Admin</option>
                 @endforeach --}}
@@ -98,12 +98,12 @@
             @enderror
 
             <input type="text" name="game_link" class="form-control mb-3" placeholder="Enter game link"
-                value="{{ old('game_link') }}" required>
+                value="{{ old('game_link') }}" >
             @error('game_link')
                 <div class="custom-error"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>
             @enderror
 
-            <button type="submit" class="btn btn-custom w-100">Create video</button>
+            <button type="submit" class="btn btn-custom w-100">Add video</button>
         </form>
 
     </div>
