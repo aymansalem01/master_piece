@@ -23,7 +23,7 @@
                                 <tr>
                                     <td>{{$subscribtion->user->name}}</td>
                                     <td>{{$subscribtion->classe->name}}</td>
-                                    <td>{{$subscribtion->vr_accesss}}</td>
+                                    <td>{{$subscribtion->vr_accesss != 0 ? 'true' : 'false'}}</td>
                                     <td>{{$subscribtion->start_date}}</td>
                                     <td>{{$subscribtion->end_date}}</td>
                                     <td>{{$subscribtion->payment_id}}</td>

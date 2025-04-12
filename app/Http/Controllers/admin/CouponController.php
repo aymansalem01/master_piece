@@ -25,13 +25,13 @@ class CouponController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'code' => 'required | min:10 | max:10',
+            'code' => 'required | min:10 ',
             'class' => 'required',
             'vr_access' => 'required'
         ]);
-        Coupon::created([
+        Coupon::create([
             'code' => $request->code,
-            'class_id' => $request->class,
+            'classe_id' => $request->class,
             'vr_access' => $request->vr_access
         ]);
         return $this->index();
@@ -54,13 +54,13 @@ class CouponController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'code' => 'required | min:10 | max:10',
+            'code' => 'required | min:10 ',
             'class' => 'required',
             'vr_access' => 'required'
         ]);
-        Coupon::find($id)->updated([
+        Coupon::find($id)->update([
             'code' => $request->code,
-            'class_id' => $request->class,
+            'classe_id' => $request->class,
             'vr_access' => $request->vr_access
         ]);
         return $this->index();

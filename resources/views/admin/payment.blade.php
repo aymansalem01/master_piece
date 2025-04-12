@@ -23,7 +23,7 @@
                                     <td>{{$payment->id}} </td>
                                     <td>{{$payment->user->name}}</td>
                                     <td>{{$payment->payment_type}}</td>
-                                    <td>{{$payment->coupon->code}}</td>
+                                    <td>{{$payment->coupon_id != null ? $payment->coupon->code : 'null'}}</td>
                                     <td>{{$payment->payment_date}}</td>
                                 </tr>
                                 @endforeach

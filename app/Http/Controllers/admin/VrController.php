@@ -12,14 +12,14 @@ class VrController extends Controller
 
     public function index()
     {
-        $vrs = Vr:: with('subject')->get();
-        return view('admin.vr.vr',['vrs' => $vrs]);
+        $vrs = Vr::with('subject')->get();
+        return view('admin.vr.vr', ['vrs' => $vrs]);
     }
 
     public function create()
     {
         $subjects = Subject::get();
-        return view('admin.vr.create',['subjects' => $subjects]);
+        return view('admin.vr.create', ['subjects' => $subjects]);
     }
 
     public function store(Request $request)
@@ -45,14 +45,14 @@ class VrController extends Controller
     public function show(string $id)
     {
         $vr = Vr::with('subject')->find($id);
-        return view('admin.vr.show',['vr' =>$vr]);
+        return view('admin.vr.show', ['vr' => $vr]);
     }
 
     public function edit(string $id)
     {
         $vr = Vr::with('subject')->find($id);
         $subjects = Subject::get();
-        return view('admin.vr.edit',['vr'=>$vr,'subjects' => $subjects]);
+        return view('admin.vr.edit', ['vr' => $vr, 'subjects' => $subjects]);
     }
 
     public function update(Request $request, string $id)
@@ -60,12 +60,18 @@ class VrController extends Controller
         $request->validate([
             'title' => 'required',
             'link' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'mimes:jpg,jpeg,png|max:2048',
             'subject' => 'required'
         ]);
-        $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $image_path);
-        Vr::find($id)->updated([
+        $vr = Vr::find($id);
+        if($request->image != null){
+            $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $image_path);
+        }else{
+            $image_path = $vr->image;
+        }
+
+        Vr::find($id)->update([
             'title' => $request->title,
             'link' => $request->link,
             'image' => $image_path,

@@ -54,9 +54,9 @@ class VideoController extends Controller
     }
     public function edit(string $id)
     {
-        $videos = Video::find($id);
+        $video = Video::find($id);
         $subjects = Subject::get();
-        return view('admin.video.edit',['videos' => $videos, 'subjects' => $subjects]);
+        return view('admin.video.edit',['video' => $video, 'subjects' => $subjects]);
     }
 
     public function update(Request $request, string $id)
@@ -75,7 +75,7 @@ class VideoController extends Controller
         {
             $game_link = $request->video_link;
         }
-        Video::find($id)->updated([
+        Video::find($id)->update([
             'title' => $request->title,
             'video_link' => $request->video_link,
             'subject_id' => $request->subject,

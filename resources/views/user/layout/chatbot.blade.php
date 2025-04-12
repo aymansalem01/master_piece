@@ -5,7 +5,7 @@
 
 <div id="chatbot-container" class="hidden">
     <div id="chatbot-header">
-        <h6 style="color: white">Chat with AI</h6>
+        <h6 style="color: white">Chat with EduFusionX AI</h6>
         <button id="chatbot-close" onclick="toggleChat()">&times;</button>
     </div>
     <div id="chatbot-messages">

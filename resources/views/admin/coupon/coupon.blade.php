@@ -29,7 +29,7 @@
                                     <td>{{$coupon->id}}</td>
                                     <td>{{$coupon->code}}</td>
                                     <td>{{$coupon->classe->name}} </td>
-                                    <td>{{$vr_access}} </td>
+                                    <td>{{$coupon->vr_access ? 'true' : 'false' }} </td>
                                     <td>{{$coupon->use_at}}</td>
                                     <td>
                                             <div style="display: flex; gap:5px" class="d-flex">

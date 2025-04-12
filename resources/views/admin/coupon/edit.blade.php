@@ -106,8 +106,8 @@
             <label for="vr_access">Access to VR</label>
             <select name="vr_access" id="vr_access" class="form-select mb-3" required>
                 <option disabled>Access to VR</option>
-                <option value="true" {{ $coupon->vr_access == 'true' ? 'selected' : '' }}>yes</option>
-                <option value="false" {{ $coupon->vr_access == 'false' ? 'selected' : '' }}>no</option>
+                <option value="1" {{ $coupon->vr_access == '1' ? 'selected' : '' }}>yes</option>
+                <option value="0" {{ $coupon->vr_access == '0' ? 'selected' : '' }}>no</option>
             </select>
             @error('vr_access')
                 <div class="custom-error"><i class="fa-solid fa-circle-exclamation"></i> {{ $message }}</div>
