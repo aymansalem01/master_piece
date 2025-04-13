@@ -15,7 +15,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-us-content">
-                            <form id="contact-form" action="" method="post">
+                            <form id="contact-form" action="{{route('feedbacks')}}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <fieldset>
@@ -26,12 +27,12 @@
                                     <div class="col-lg-12">
                                         <fieldset>
                                             <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*"
-                                                placeholder="Your E-mail..." required="">
+                                                placeholder="Your E-mail..." required>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                                            <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">

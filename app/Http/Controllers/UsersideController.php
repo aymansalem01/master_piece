@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classe;
+use App\Models\Subject;
+use App\Models\Vr;
 use Illuminate\Http\Request;
 
 class UsersideController extends Controller
@@ -17,14 +20,17 @@ class UsersideController extends Controller
     }
     public function course()
     {
-        return view('user.course');
+        $classes = Classe::get();
+        return view('user.course',['classes' => $classes]);
     }
-    public function subject()
+    public function subject(string $id)
     {
-        return view('user.subject');
+        $subjects = Subject::where('classe_id','=',$id)->get();
+        return view('user.subject',['subjects' => $subjects]);
     }
     public function vr()
     {
-        return view('user.vr');
+        $vrs = Vr::with('subject')->get();
+        return view('user.vr',['vrs' => $vrs]);
     }
 }

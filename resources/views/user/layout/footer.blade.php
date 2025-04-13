@@ -5,7 +5,8 @@
             <div class="col-lg-6 pt-3">
                 <h4 style="color: white;">Subscribe for All News</h4>
                 <div class="d-flex">
-                    <form action="" class="d-flex w-100">
+                    <form action="{{route('subscribe')}}" method="post" class="d-flex w-100">
+                        @csrf
                         <input type="email" name="email" class="form-control rounded-2 px-4 mx-1"
                             placeholder="Enter your email" required />
                         <button type="submit" class="btn btn-light rounded-5 px-3" style="color: #7a6ad8">
@@ -19,10 +20,10 @@
             <div class="col-lg-6 pt-3 text-end">
                 <h5 class="fw-bold" style="color: white;">Follow Us</h5>
                 <div class="d-flex justify-content-end gap-3">
-                    <a href="#" class="text-white fs-4"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="fab fa-twitter-square"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="fab fa-instagram-square"></i></a>
-                    <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/login.php/" class="text-white fs-4"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://x.com/i/flow/login" class="text-white fs-4"><i class="fab fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/" class="text-white fs-4"><i class="fab fa-instagram-square"></i></a>
+                    <a href="https://www.linkedin.com/in/ayman-aburumman/" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@
         <hr class="my-3 border-light" />
 
         <div class="text-center">
-            <p class="mb-0">&copy; 2025 YourPlatform. All Rights Reserved.</p>
+            <p class="mb-0">&copy; 2025 EduFusionX. All Rights Reserved.</p>
         </div>
     </div>
 </footer>

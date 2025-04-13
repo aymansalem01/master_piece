@@ -5,36 +5,20 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="row event_box">
+                        @foreach ($vrs as $vr)
                         <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
                             <div class="events_item">
                                 <div class="thumb">
-                                    <a href="#"><img src="assets/images/course-01.jpg" alt="" /></a>
+                                    <a href="{{$vr->link}}"><img src="{{asset('images/'.$vr->image)}}" alt="" />
                                 </div>
                                 <div class="down-content">
-                                    <h4>Learn Web Design</h4>
+                                    <h4>{{$vr->title}}</h4>
+                                    <h4>subject: {{ $vr->subject->name }} </h4>
                                 </div>
+                            </a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 development">
-                            <div class="events_item">
-                                <div class="thumb">
-                                    <a href="#"><img src="assets/images/course-02.jpg" alt="" /></a>
-                                </div>
-                                <div class="down-content">
-                                    <h4>Web Development Tips</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design wordpress">
-                            <div class="events_item">
-                                <div class="thumb">
-                                    <a href="#"><img src="assets/images/course-03.jpg" alt="" /></a>
-                                </div>
-                                <div class="down-content">
-                                    <h4>Latest Web Trends</h4>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
