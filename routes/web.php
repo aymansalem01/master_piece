@@ -9,7 +9,6 @@ use App\Http\Controllers\admin\User_adminController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\VrController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MixController;
 use App\Http\Controllers\UsersideController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -37,8 +36,8 @@ Route::view('login','login')->name('log');
 Route::view('signup','signup')->name('sign');
 Route::post('signup',[AuthController::class,'signup'])->name('signup');
 Route::post('login' , [AuthController::class,'login'])->name('login');
-Route::post('subscribe',[MixController::class,'subscribe'])->name('subscribe');
-Route::post('feedback',[MixController::class,'feedback'])->name('feedbacks');
+Route::post('subscribe',[UsersideController::class,'subscribe'])->name('subscribe');
+Route::post('feedback',[UsersideController::class,'feedback'])->name('feedbacks');
 
 
 

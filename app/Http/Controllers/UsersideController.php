@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Vr;
 use App\Models\Classe;
 use App\Models\Subject;
-use App\Models\Vr;
+use App\Models\Feedback;
+use App\Models\Subscribe;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UsersideController extends Controller
 {
@@ -32,5 +34,28 @@ class UsersideController extends Controller
     {
         $vrs = Vr::with('subject')->get();
         return view('user.vr',['vrs' => $vrs]);
+    }
+    public function feedback(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'message' => 'required'
+        ]);
+
+        Feedback::create([
+            'email' => $request->email,
+            'message' => $request->message
+        ]);
+        return redirect()->back();
+    }
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'email' => 'required |unique:subscribes,email'
+        ]);
+        Subscribe::create([
+            'email' => $request->email
+        ]);
+        return redirect()->back();
     }
 }
