@@ -9,6 +9,8 @@ use App\Models\Feedback;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Visainfo;
+use Illuminate\Support\Facades\Auth;
 
 class UsersideController extends Controller
 {
@@ -34,6 +36,12 @@ class UsersideController extends Controller
     {
         $vrs = Vr::with('subject')->get();
         return view('user.vr',['vrs' => $vrs]);
+    }
+    public function store()
+    {
+        $classes = Classe::get();
+        $visa_info = Visainfo::where('user_id','1')->first();
+        return view('user.store',['classes' => $classes,'visa_info'=>$visa_info]);
     }
     public function feedback(Request $request)
     {

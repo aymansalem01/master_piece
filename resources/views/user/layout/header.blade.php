@@ -55,6 +55,9 @@
                                 <a href="{{ route('vr') }}">VR LABS</a>
                             </li>
                             <li>
+                                <a href="{{ route('store') }}">Store</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('contact') }}">Feedback</a>
                             </li>
                             <li>
