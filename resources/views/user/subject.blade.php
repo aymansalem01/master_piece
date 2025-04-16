@@ -10,7 +10,7 @@
                         <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 design">
                             <div class="events_item">
                                 <div class="thumb">
-                                    <a href="#"><img src="{{asset('images/'.$subject->image)}}" alt="">
+                                    <a href=" {{route('show',$subject->id) }}  "><img src="{{asset('images/'.$subject->image)}}" alt="">
                                 </div>
                                 <div class="down-content">
                                     <h4>{{$subject->name}}</h4>

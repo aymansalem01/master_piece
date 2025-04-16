@@ -44,7 +44,7 @@ Route::get('store',[UsersideController::class,'store'])->name('store');
 Route::post('visa',[PaymentController::class,'visa'])->name('payment_visa');
 Route::post('coupon_payment',[PaymentController::class,'coupon'])->name('payment_coupon');
 
-
+Route::get('/videos/{id}',[UsersideController::class,'video'])->name('show');
 
 
 

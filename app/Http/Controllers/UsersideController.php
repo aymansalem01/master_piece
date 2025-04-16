@@ -9,6 +9,7 @@ use App\Models\Feedback;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Video;
 use App\Models\Visainfo;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,6 +43,12 @@ class UsersideController extends Controller
         $classes = Classe::get();
         $visa_info = Visainfo::where('user_id','1')->first();
         return view('user.store',['classes' => $classes,'visa_info'=>$visa_info]);
+    }
+    public function video(string $id)
+    {
+        $videos = Video::where('subject_id','=',$id)->get();
+        $show = Video::where('subject_id', '=' , $id )->first();
+        return view('user.video',['videos' => $videos , 'show' => $show]);
     }
     public function feedback(Request $request)
     {
