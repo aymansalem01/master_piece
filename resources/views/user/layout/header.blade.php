@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-scholar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
-    <link rel="stylesheet" href="{{asset('assets/css/chatbot.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/chatbot.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
@@ -60,9 +60,27 @@
                             <li>
                                 <a href="{{ route('contact') }}">Feedback</a>
                             </li>
-                            <li>
-                                <a href="{{route('sign')}}">Register Now!</a>
-                            </li>
+                            @auth
+                                <li class=" dropdown">
+                                    <a class=" dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ route('sign') }}" >Register Now!</a>
+                                </li>
+                            @endauth
                         </ul>
                         <a class="menu-trigger">
                             <span>Menu</span>

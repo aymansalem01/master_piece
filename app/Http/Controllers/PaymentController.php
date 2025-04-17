@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Classe;
+use App\Models\Coupon;
+use App\Models\Payment;
 use App\Models\Visainfo;
 use App\Models\Subscribtion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Coupon;
-use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+    public function store()
+    {
+        $classes = Classe::get();
+        $visa_info = Visainfo::where('user_id','1')->first();
+        return view('user.store',['classes' => $classes,'visa_info'=>$visa_info]);
+    }
+
+
     public function visa(Request $request)
     {
         $request->validate([

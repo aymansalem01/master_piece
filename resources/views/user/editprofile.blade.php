@@ -143,11 +143,10 @@
 <body>
 
     <div class="signup-container">
-        <h1>Sign Up</h1>
+        <h1>edit profile</h1>
         <form method="post" action="{{ route('signup') }}" >
             @csrf
             <div class="input-group">
-
                 <input type="text" id="name" name="name" placeholder="Enter your full name"
                     value="{{ old('name') }}" required>
                 @error('name')
@@ -192,9 +191,8 @@
 
 
 
-            <button type="submit">Sign Up</button>
+            <button type="submit">edit</button>
         </form>
-        <p>Already have an account? <a href="{{ route('login') }}">Log In</a></p>
     </div>
 </body>
 

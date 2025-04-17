@@ -806,6 +806,8 @@ Services Style
 .services .service-item {
   position: relative;
   margin-top: 95px;
+  margin-bottom: 150px;
+
 }
 
 .services .service-item .icon {
@@ -858,6 +860,7 @@ About Style
   position: relative;
   padding: 0px;
   margin-top: 130px;
+  margin-bottom: 150px;
 }
 
 .about-us:before {
@@ -1635,12 +1638,12 @@ Footer Style
 */
 
 footer {
-  margin-top: 150px;
+  margin-top: 50px;
   position: relative;
   background-color: #7a6ad8;
   vertical-align: middle;
   min-height: 250px;
-  border-radius: 150px 150px 0px 0px;
+
 }
 
 footer p {
