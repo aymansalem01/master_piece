@@ -34,7 +34,7 @@ class CouponController extends Controller
             'classe_id' => $request->class,
             'vr_access' => $request->vr_access
         ]);
-        return $this->index();
+        return $this->index()->with('success','coupon created successfully');
     }
 
     public function show(string $id)
@@ -63,11 +63,12 @@ class CouponController extends Controller
             'classe_id' => $request->class,
             'vr_access' => $request->vr_access
         ]);
-        return $this->index();
+        return $this->index()->with('success', 'Coupon updated successfully!');
     }
 
     public function destroy(string $id)
     {
-        //
+        Coupon::destroy($id);
+        return redirect()->route('coupons.index')->with('success', 'Coupon deleted successfully!');
     }
-}
+    }

@@ -2,3 +2,4 @@
 @yield('content')
 @include('user.layout.chatbot')
 @include('user.layout.footer')
+@include('user.layout.sweetAleart')

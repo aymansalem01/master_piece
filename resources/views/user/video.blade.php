@@ -123,8 +123,8 @@
         </ul>
     </div>
     <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh; width: 100%; overflow-x: scroll;">
-        <div class="text-center">
-            <h1>{{ $show->title }}</h1>
+        <div class="text-center" >
+            <h1 style="margin-bottom: 40px">{{ $show->title }}</h1>
             <!-- Video -->
             <div class="ratio ratio-16x9 mb-4" style=" max-width:800px; min-width:150px ; width: 700px;">
                 <iframe src="{{ $show->video_link }}" title="YouTube video" allowfullscreen width="90%" height="auto">

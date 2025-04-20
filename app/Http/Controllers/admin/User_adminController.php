@@ -33,7 +33,7 @@ class User_adminController extends Controller
             'phone_number' => $request->phone_number,
             'role' => 'user'
         ]);
-        return $this->index();
+        return $this->index()->with('success', 'User added successfully!');
     }
 
     public function show(string $id)
@@ -64,12 +64,12 @@ class User_adminController extends Controller
             ]);
 
 
-        return redirect()->back()->with(['message' => 'No changes detected']);
+        return redirect()->back()->with('success', 'User updated successfully!');
     }
 
     public function destroy(string $id)
     {
         User::destroy($id);
-        return $this->index();
+        return $this->index()->with('success', 'user deleted!');
     }
 }

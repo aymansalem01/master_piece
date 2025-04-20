@@ -38,7 +38,7 @@
     </div>
     <div style="margin-bottom: 150px ">
         <div class="d-flex justify-content-center gap-3">
-            <a href="" class="btn " style="background-color: #7a6ad8;color:white">edit profile</a>
+            <a href="{{route('prof')}} " class="btn " style="background-color: #7a6ad8;color:white">edit profile</a>
             <a href="" class="btn " style="background-color: #7a6ad8;color:white">Add parent</a>
             <a href="" class="btn " style="background-color: #7a6ad8;color:white">VR access?</a>
         </div>

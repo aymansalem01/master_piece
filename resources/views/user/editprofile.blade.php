@@ -144,55 +144,44 @@
 
     <div class="signup-container">
         <h1>edit profile</h1>
-        <form method="post" action="{{ route('signup') }}" >
+        <form method="post" action="{{ route('edit', Auth::user()->id) }}">
             @csrf
+            @method('PUT')
+
             <div class="input-group">
                 <input type="text" id="name" name="name" placeholder="Enter your full name"
-                    value="{{ old('name') }}" required>
+                    value="{{ old('name', Auth::user()->name) }}" required>
                 @error('name')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="input-group">
-
                 <input type="email" id="email" name="email" placeholder="Enter your email"
-                    value="{{ old('email') }}" required>
+                    value="{{ old('email', Auth::user()->email) }}" required>
                 @error('email')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="input-group">
-
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter New password">
                 @error('password')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="input-group">
-
-                <input type="password" id="password_confirmation" name="password_confirmation"
-                    placeholder="Confirm your password" required>
-                @error('password_confirmation')
-                    <p class="error">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="input-group">
-
                 <input type="tel" id="phone_number" name="phone_number" placeholder="Enter your phone number"
-                    value="{{ old('phone_number') }}" required>
+                    value="{{ old('phone_number', Auth::user()->phone_number) }}" required>
                 @error('phone_number')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>
 
-
-
-            <button type="submit">edit</button>
+            <button type="submit">Edit</button>
         </form>
+
     </div>
 </body>
 

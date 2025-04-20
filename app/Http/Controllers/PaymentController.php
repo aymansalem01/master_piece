@@ -52,7 +52,7 @@ class PaymentController extends Controller
             'end_date'   => Carbon::now()->addMonths(3),
             'payment_id' => $payment->id
         ]);
-        return redirect()->back()->with(['message' => 'thanks for join us']);
+        return redirect()->back()->with(['success' => 'thanks for join us']);
     }
 
 
@@ -63,30 +63,30 @@ class PaymentController extends Controller
         ]);
         $coupon = Coupon::where('code', $request->coupon)->first();
         if ($coupon == null) {
-            return redirect()->back()->with(['message' => 'coupon not found']);
+            return redirect()->back()->with(['error' => 'coupon not found']);
         }
         if($coupon->use_at != null)
         {
-            return redirect()->back()->with(['message'=>'coupon already used']);
+            return redirect()->back()->with(['error'=>'coupon already used']);
         }
         $coupon->update([
             'use_at' => Carbon::now()
         ]);
         $payment = Payment::create([
-            'user_id' => 2,
+            'user_id' => Auth::user()->id,
             'payment_type' => 'coupon',
             'coupon_id' => $coupon->id,
             'payment_date' => Carbon::now(),
         ]);
 
         Subscribtion::create([
-            'user_id' => 2,
+            'user_id' => Auth::user()->id,
             'classe_id' => $coupon->classe_id,
             'vr_access' => $coupon->vr_access,
             'start_date' => Carbon::now(),
             'end_date'   => Carbon::now()->addMonths(3),
             'payment_id' => $payment->id
         ]);
-        return redirect()->back()->with(['message'=>'thank you for join us']);
+        return redirect()->back()->with(['success'=>'thank you for join us']);
     }
 }

@@ -19,7 +19,7 @@
                                     <form action="{{route('video.destroy',$video->id)}}" method="post">
                                         @csrf
                                         @method('delete')
-                                    <button type="submit" class="btn btn-sm btn-danger delete-btn icond">
+                                    <button type="submit" onsubmit="confirmDelete" class="btn btn-sm btn-danger delete-btn icond">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

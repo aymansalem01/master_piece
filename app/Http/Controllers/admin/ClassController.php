@@ -36,7 +36,7 @@ class ClassController extends Controller
             'price' => $request->price,
             'image' => $image_path
         ]);
-        return $this->index();
+        return $this->index()->with(['success' => 'classe added successfully']);
     }
 
     public function show(string $id)
@@ -68,7 +68,7 @@ class ClassController extends Controller
             'price' => $request->price,
             'image' => $image_path
         ]);
-        return $this->index();
+        return $this->index()>with(['success' => 'classe update successfully']);
     }
 
     public function destroy(string $id)

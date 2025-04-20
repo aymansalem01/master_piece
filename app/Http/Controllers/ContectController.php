@@ -14,7 +14,7 @@ class ContectController extends Controller
     {
         return view('user.contact');
     }
-    
+
     public function feedback(Request $request)
     {
         $request->validate([
@@ -26,7 +26,7 @@ class ContectController extends Controller
             'email' => $request->email,
             'message' => $request->message
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','thanks for Feedback');
     }
     public function subscribe(Request $request)
     {
@@ -36,6 +36,6 @@ class ContectController extends Controller
         Subscribe::create([
             'email' => $request->email
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('success','thanks for subscribe');
     }
 }

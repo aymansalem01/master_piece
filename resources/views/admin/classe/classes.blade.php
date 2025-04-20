@@ -21,7 +21,7 @@
                                     <form action="{{route('class.destroy',$class->id)}}" method="post" >
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="submit" class="delete-btn" onsubmit="confirmDelete"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </div>
                             </div>

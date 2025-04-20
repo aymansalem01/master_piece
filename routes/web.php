@@ -70,7 +70,7 @@ Route::post('coupon_payment', [PaymentController::class, 'coupon'])->name('payme
 
 
 Route::get('dashboard', [UsersideController::class, 'dashboard'])->name('dashboard');
-Route::view('/editprofile','user.editprofile');
+Route::view('/editprofile','user.editprofile')->name('prof');
 Route::put('edit/{id}',[AuthController::class,'update'])->name('edit');
 
 
