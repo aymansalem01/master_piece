@@ -87,9 +87,9 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-            return redirect()->back()->with(['message' => 'Update successful']);
+            return redirect()->back()->with(['success' => 'Update successful']);
         }
 
-        return redirect()->back()->with(['message' => 'No changes detected']);
+        return redirect()->back()->with(['success' => 'No changes detected']);
     }
 }

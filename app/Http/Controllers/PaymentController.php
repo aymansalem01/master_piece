@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function store()
     {
         $classes = Classe::get();
-        $visa_info = Visainfo::where('user_id','1')->first();
+        $visa_info = Visainfo::where('user_id',Auth::user()->id)->first();
         return view('user.store',['classes' => $classes,'visa_info'=>$visa_info]);
     }
 

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('visainfos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->integer('visa_no');
+            $table->string('visa_no');
             $table->string('visa_name');
             $table->integer('visa_code');
             $table->timestamps();
