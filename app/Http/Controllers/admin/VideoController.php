@@ -44,7 +44,7 @@ class VideoController extends Controller
             'has_game' => $has_game,
             "game_link" => $game_link
         ]);
-        return $this->index()->with('success', 'Video added successfully!');
+        return redirect()->back()->with('success', 'Video added successfully!');
     }
 
     public function show(string $id)
@@ -82,11 +82,11 @@ class VideoController extends Controller
             'has_game' => $has_game,
             "game_link" => $game_link
         ]);
-        return $this->index()->with('success', 'Video updated successfully!');
+        return redirect()->back()->with('success', 'Video updated successfully!');
     }
     public function destroy(string $id)
     {
         Video::destroy($id);
-        return $this->index()->with('success', 'Video deleted!');
+        return redirect()->back()->with('success', 'Video deleted!');
     }
 }

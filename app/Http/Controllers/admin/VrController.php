@@ -39,7 +39,7 @@ class VrController extends Controller
             'image' => $image_path,
             'subject_id' => $request->subject
         ]);
-        return $this->index()->with('success', 'Vr added successfully!');
+        return redirect()->back()->with('success', 'Vr added successfully!');
     }
 
     public function show(string $id)
@@ -77,12 +77,12 @@ class VrController extends Controller
             'image' => $image_path,
             'subject_id' => $request->subject
         ]);
-        return $this->index()->with('success', 'VR updated successfully!');
+        return redirect()->back()->with('success', 'VR updated successfully!');
     }
 
     public function destroy(string $id)
     {
         Vr::destroy($id);
-        return $this->index()->with('success', 'VR deleted!');
+        return redirect()->back()->with('success', 'VR deleted!');
     }
 }

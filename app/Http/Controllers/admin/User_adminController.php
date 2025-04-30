@@ -33,7 +33,7 @@ class User_adminController extends Controller
             'phone_number' => $request->phone_number,
             'role' => 'user'
         ]);
-        return $this->index()->with('success', 'User added successfully!');
+        return redirect()->back()->with('success', 'User added successfully!');
     }
 
     public function show(string $id)
@@ -70,6 +70,6 @@ class User_adminController extends Controller
     public function destroy(string $id)
     {
         User::destroy($id);
-        return $this->index()->with('success', 'user deleted!');
+        return redirect()->back()->with('success', 'user deleted!');
     }
 }

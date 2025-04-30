@@ -39,10 +39,10 @@
                                             <a href="{{route('coupon.edit', $coupon->id)}}" class="btn btn-sm btn-warning me-2 icone">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{route('coupon.destroy', $coupon->id)}}" method="post">
+                                            <form action="{{route('coupon.destroy', $coupon->id)}}" method="post" onsubmit="return confirmDelete(event,{{$coupon->id}})">
                                                 @csrf
                                                 @method('delete')
-                                            <button type="submit" onsubmit="confirmDelete" class="btn btn-sm btn-danger delete-btn icond">
+                                            <button type="submit"  class="btn btn-sm btn-danger delete-btn icond">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>

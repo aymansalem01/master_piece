@@ -36,7 +36,7 @@ class ClassController extends Controller
             'price' => $request->price,
             'image' => $image_path
         ]);
-        return $this->index()->with(['success' => 'classe added successfully']);
+        return redirect()->back()->with(['success' => 'classe added successfully']);
     }
 
     public function show(string $id)
@@ -68,11 +68,12 @@ class ClassController extends Controller
             'price' => $request->price,
             'image' => $image_path
         ]);
-        return $this->index()>with(['success' => 'classe update successfully']);
+        return redirect()->back()->with(['success' => 'classe update successfully']);
     }
 
     public function destroy(string $id)
     {
-        //
+        Classe::destroy($id);
+        return redirect()->back()->with(['success' => 'delted successfuly']);
     }
 }

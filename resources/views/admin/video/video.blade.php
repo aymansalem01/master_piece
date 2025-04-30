@@ -16,10 +16,10 @@
                                 <p>{{$video->subject->name}} </p>
                                 <div class="action-buttons">
                                     <a href="{{route('video.edit',$video->id)}}" class="edit-btn"><i class="fa-solid fa-pen"></i></a>
-                                    <form action="{{route('video.destroy',$video->id)}}" method="post">
+                                    <form action="{{route('video.destroy',$video->id)}}" method="post" onsubmit="return confirmDelete(event,{{$video->id}})">
                                         @csrf
                                         @method('delete')
-                                    <button type="submit" onsubmit="confirmDelete" class="btn btn-sm btn-danger delete-btn icond">
+                                    <button type="submit"  class="btn btn-sm btn-danger delete-btn icond">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

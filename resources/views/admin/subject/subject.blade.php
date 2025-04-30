@@ -8,9 +8,8 @@
             </a>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    @foreach ( $subjects as $subject )
+            @foreach ( $subjects as $subject )
+                <div class="col-md-4">
                     <div class="review-card">
                         <img src="{{asset('images/'.$subject->image)}}" alt="">
                     <div>
@@ -26,10 +25,10 @@
                                 class="btn btn-sm btn-warning me-2 icone">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{route('subject.destroy',$subject->id)}}" method="post">
+                            <form action="{{route('subject.destroy',$subject->id)}}" onsubmit="return confirmDelete(event,{{$subject->id}})"  method="post">
                                 @csrf
                                 @method('delete')
-                            <button type="submit" onsubmit="confirmDelete" class="btn btn-sm btn-danger delete-btn icond">
+                            <button type="submit" class="btn btn-sm btn-danger delete-btn icond">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -37,9 +36,9 @@
                     </div>
                 </div>
             </div>
-                    @endforeach
                 </div>
+                @endforeach
+
             </div>
         </div>
-    </div>
 @endsection

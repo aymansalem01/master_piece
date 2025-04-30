@@ -36,7 +36,7 @@ class SubjectController extends Controller
             'image' => $image_path,
             'classe_id' => $request->class
         ]);
-        return $this->index()->with('success', 'subject added successfully!');
+        return redirect()->back()->with('success', 'subject added successfully!');
     }
 
     public function show(string $id)
@@ -75,12 +75,12 @@ class SubjectController extends Controller
             'image' => $image_path,
             'classe_id' => $request->class
         ]);
-        return $this->index()->with('success', 'subject updated successfully!');
+        return redirect()->back()->with('success', 'subject updated successfully!');
     }
 
     public function destroy(string $id)
     {
         Subject::destroy($id);
-        return $this->index()->with('success', 'subject deleted!');
+        return redirect()->back()->with('success', 'subject deleted!');
     }
 }

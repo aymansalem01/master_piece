@@ -7,9 +7,8 @@
                     </a>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-6">
-                            @foreach ($vrs as $vr )
+                    @foreach ($vrs as $vr )
+                        <div class="col-md-4">
                             <div class="review-card">
                                 <img src="{{asset('images/'.$vr->image)}}" alt="">
                             <div>
@@ -25,10 +24,10 @@
                                         class="btn btn-sm btn-warning me-2 icone">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="{{route('vr.destroy',$vr->id)}}" method="post">
+                                    <form action="{{route('vr.destroy',$vr->id)}}" method="post" onsubmit=" return confirmDelete(event,{{$vr->id}})" >
                                         @csrf
                                         @method('delete')
-                                    <button type="submit" onsubmit="confirmDelete" class="btn btn-sm btn-danger delete-btn icond">
+                                    <button type="submit" class="btn btn-sm btn-danger delete-btn icond">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -36,9 +35,10 @@
                             </div>
                         </div>
                     </div>
-                            @endforeach
                         </div>
+                        @endforeach
+
                     </div>
                 </div>
-            </div>
+
             @endsection

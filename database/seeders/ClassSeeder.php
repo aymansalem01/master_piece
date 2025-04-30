@@ -42,5 +42,13 @@ class ClassSeeder extends Seeder
             'name' => 'Eighth Grade',
             'price' => 20,
         ]);
+        Classe::create([
+            'name' => 'Ninth Grade',
+            'price' => 20,
+        ]);
+        Classe::create([
+            'name' => 'Tenth Grade',
+            'price' => 20,
+        ]);
     }
 }
