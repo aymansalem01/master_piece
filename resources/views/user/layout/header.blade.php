@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>EduFusionX</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -61,13 +62,13 @@
                                 <a href="{{ route('contact') }}">Feedback</a>
                             </li>
                             @auth
-                                <li class=" dropdown">
+                                <li class="dropdown">
                                     <a class=" dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         {{ Auth::user()->name }}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        <li><a class="dropdown-item" style="color: black" href="{{ route('dashboard') }}">Dashboard</a></li>
                                         <li>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf

@@ -17,7 +17,7 @@ class VideoController extends Controller
 
     public function create()
     {
-        $subjects = Subject::get();
+        $subjects = Subject::with('classe')->get();
         return view('admin.video.create',['subjects'=>$subjects]);
     }
 

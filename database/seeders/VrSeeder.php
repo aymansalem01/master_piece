@@ -16,12 +16,12 @@ class VrSeeder extends Seeder
         'image' => 'chlav.jpg',
         'subject_id' => 16
     ]);
-    Vr::create([
-        'title' => 'physics lab 8th Grade',
-        'link' => 'test',
-        'image' => 'phylab.png',
-        'subject_id' => 16
-    ]);
+    // Vr::create([
+    //     'title' => 'physics lab 8th Grade',
+    //     'link' => 'test',
+    //     'image' => 'phylab.png',
+    //     'subject_id' => 16
+    // ]);
     Vr::create([
         'title' => 'chemistry lab 9th Grade',
         'link' => 'test',
