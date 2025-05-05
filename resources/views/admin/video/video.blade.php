@@ -8,12 +8,12 @@
                     </a>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
                         @foreach ($videos as $video )
                         <div class="col-md-4 col-sm-6 mb-4">
                             <div class="review-card">
                                 <h5 class="category-name">{{$video->title}}</h5>
                                 <p>{{$video->subject->name}} </p>
+                                <p>{{$video->subject->classe->name}} </p>
                                 <div class="action-buttons">
                                     <a href="{{route('video.edit',$video->id)}}" class="edit-btn"><i class="fa-solid fa-pen"></i></a>
                                     <form action="{{route('video.destroy',$video->id)}}" method="post" onsubmit="return confirmDelete(event,{{$video->id}})">
@@ -27,7 +27,6 @@
                             </div>
                         </div>
                     @endforeach
-                    </div>
                 </div>
             </div>
             @endsection

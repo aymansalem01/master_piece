@@ -116,7 +116,7 @@
                 <option disabled>Select subject</option>
                 @foreach($subjects as $subject)
                     <option value="{{ $subject->id }}" {{ $vr->subject_id == $subject->id ? 'selected' : '' }}>
-                        {{ $subject->name }}
+                        {{ $subject->name }} {{$subject->classe->name}}
                     </option>
                 @endforeach
             </select>

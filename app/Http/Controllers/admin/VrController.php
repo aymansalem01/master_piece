@@ -18,7 +18,7 @@ class VrController extends Controller
 
     public function create()
     {
-        $subjects = Subject::get();
+        $subjects = Subject::with('classe')->get();
         return view('admin.vr.create', ['subjects' => $subjects]);
     }
 
@@ -51,7 +51,7 @@ class VrController extends Controller
     public function edit(string $id)
     {
         $vr = Vr::with('subject')->find($id);
-        $subjects = Subject::get();
+        $subjects = Subject::with('classe')->get();
         return view('admin.vr.edit', ['vr' => $vr, 'subjects' => $subjects]);
     }
 

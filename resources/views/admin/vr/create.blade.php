@@ -109,7 +109,7 @@
                 <select name="subject" id="subject" class="form-select mb-3" required>
                     <option disabled selected>Select subject</option>
                     @foreach($subjects as $subject )
-                    <option value="{{$subject->id}}">{{$subject->name}}</option>
+                    <option value="{{$subject->id}}">{{$subject->name}} {{$subject->classe->name}}</option>
                     @endforeach
                 </select>
                 @error('subject')
