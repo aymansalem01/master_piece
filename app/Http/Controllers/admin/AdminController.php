@@ -18,18 +18,18 @@ class AdminController extends Controller
     }
     public function feedback()
     {
-        $feedbacks = Feedback::get();
-        $subscribes = Subscribe::get();
+        $feedbacks = Feedback::paginate(15);
+        $subscribes = Subscribe::paginate(15);
         return view('admin.feedback',['feedbacks' => $feedbacks , 'subscribes' => $subscribes]);
     }
     public function subscribtion()
     {
-        $subscribtions = Subscribtion::with(['user','classe','payment'])->get();
+        $subscribtions = Subscribtion::with(['user','classe','payment'])->paginate(15);
         return view('admin.subscribtion',['subscribtions' => $subscribtions]);
     }
     public function payment()
     {
-        $payments = Payment::with(['user','coupon'])->get();
+        $payments = Payment::with(['user','coupon'])->paginate(10);
         return view('admin.payment',['payments' => $payments]);
     }
 }

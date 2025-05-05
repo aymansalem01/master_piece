@@ -40,5 +40,8 @@
                 @endforeach
 
             </div>
+            <div class="d-flex justify-content-center">
+                {!! $subjects->links('vendor.pagination.bootstrap-5') !!}
+            </div>
         </div>
 @endsection

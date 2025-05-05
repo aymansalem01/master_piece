@@ -38,5 +38,8 @@
                         </div>
                         @endforeach
                     </div>
+                    <div class="d-flex justify-content-center">
+                        {!! $vrs->links('vendor.pagination.bootstrap-5') !!}
+                    </div>
                 </div>
             @endsection

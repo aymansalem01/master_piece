@@ -12,7 +12,7 @@ class SubjectController extends Controller
 
     public function index()
     {
-        $subjects = Subject::with('classe')->get();
+        $subjects = Subject::with('classe')->paginate(6);
         return view('admin.subject.subject',['subjects' => $subjects]);
     }
 

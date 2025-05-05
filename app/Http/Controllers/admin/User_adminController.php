@@ -11,7 +11,7 @@ class User_adminController extends Controller
 {
     public function index()
     {
-        $users = User::get();
+        $users = User::paginate(10);
         return view('admin.user.user',['users' => $users]);
     }
     public function create()

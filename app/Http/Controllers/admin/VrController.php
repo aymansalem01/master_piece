@@ -12,7 +12,7 @@ class VrController extends Controller
 
     public function index()
     {
-        $vrs = Vr::with('subject')->get();
+        $vrs = Vr::with('subject')->paginate(6);
         return view('admin.vr.vr', ['vrs' => $vrs]);
     }
 

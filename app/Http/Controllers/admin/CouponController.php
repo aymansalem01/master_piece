@@ -12,7 +12,7 @@ class CouponController extends Controller
 
     public function index()
     {
-        $coupons = Coupon::with('classe')->get();
+        $coupons = Coupon::with('classe')->paginate(10);
         return view('admin.coupon.coupon',['coupons' => $coupons]);
     }
 
