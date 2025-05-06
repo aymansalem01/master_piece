@@ -10,16 +10,27 @@ use Illuminate\Http\Request;
 class SubjectController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $subjects = Subject::with('classe')->paginate(6);
-        return view('admin.subject.subject',['subjects' => $subjects]);
+        $query = Subject::with('classe');
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('classe_id')) {
+            $query->where('classe_id', $request->classe_id);
+        }
+
+        $subjects = $query->paginate(6)->appends($request->query());
+        $classes = Classe::get();
+        return view('admin.subject.subject', ['subjects' => $subjects, 'classes' => $classes]);
     }
 
     public function create()
     {
         $classes = Classe::get();
-        return view('admin.subject.create',['classes' => $classes]);
+        return view('admin.subject.create', ['classes' => $classes]);
     }
 
     public function store(Request $request)
@@ -42,16 +53,14 @@ class SubjectController extends Controller
     public function show(string $id)
     {
         $subject =  Subject::with('classe')->find($id);
-        return view('admin.subject.show',['subject' => $subject]);
-
+        return view('admin.subject.show', ['subject' => $subject]);
     }
 
     public function edit(string $id)
     {
         $subject = Subject::with('classe')->find($id);
         $classes = Classe::get();
-        return view('admin.subject.edit',['subject'=>$subject,'classes'=>$classes]);
-
+        return view('admin.subject.edit', ['subject' => $subject, 'classes' => $classes]);
     }
 
     public function update(Request $request, string $id)
@@ -63,10 +72,10 @@ class SubjectController extends Controller
         ]);
         $subject = Subject::find($id);
 
-        if($request->image != null){
+        if ($request->image != null) {
             $image_path = uniqid() . '-' . $request->name . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $image_path);
-        }else{
+        } else {
             $image_path = $subject->image;
         }
 

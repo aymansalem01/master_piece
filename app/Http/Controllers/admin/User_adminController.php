@@ -9,10 +9,20 @@ use Illuminate\Support\Facades\Hash;
 
 class User_adminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(10);
-        return view('admin.user.user',['users' => $users]);
+        $query = User::query();
+
+        if ($request->filled('email')) {
+            $query->where('email', 'LIKE', '%' . $request->email . '%');
+        }
+
+        if ($request->filled('role')) {
+            $query->where('role', $request->role);
+        }
+
+        $users = $query->paginate(10)->appends($request->query());
+        return view('admin.user.user', ['users' => $users]);
     }
     public function create()
     {
@@ -39,13 +49,12 @@ class User_adminController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        return view('admin.user.show',['user' => $user]);
-
+        return view('admin.user.show', ['user' => $user]);
     }
     public function edit(string $id)
     {
         $user = User::find($id);
-        return view('admin.user.edit',['user' => $user]);
+        return view('admin.user.edit', ['user' => $user]);
     }
 
     public function update(Request $request, string $id)
@@ -56,12 +65,12 @@ class User_adminController extends Controller
             'password' => 'required|min:8',
         ]);
         User::find($id)->update([
-                'name' => $request->name,
-                // 'phone_number' => $request->phone_number,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => $request->role
-            ]);
+            'name' => $request->name,
+            // 'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role
+        ]);
 
 
         return redirect()->back()->with('success', 'User updated successfully!');

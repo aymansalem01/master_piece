@@ -6,13 +6,31 @@ use App\Models\Video;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Classe;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $videos = Video::with('subject')->paginate(9);
-        return view ('admin.video.video',['videos' => $videos]);
+        $query = Video::query()->with(['subject']);
+
+        if ($request->filled('title')) {
+            $query->where('title', 'LIKE', '%' . $request->title . '%');
+        }
+
+        if ($request->filled('subject_id')) {
+            $query->where('subject_id', $request->subject_id);
+        }
+
+        if ($request->filled('classe_id')) {
+            $query->whereHas('subject.classe', function($q) use ($request) {
+                $q->where('id', $request->classe_id);
+            });
+        }
+        $videos = $query->paginate(9)->appends($request->query());
+        $subjects = Subject::get();
+        $classes = Classe::get();
+        return view ('admin.video.video',['videos' => $videos,'subjects'=>$subjects,'classes'=>$classes]);
     }
 
     public function create()
