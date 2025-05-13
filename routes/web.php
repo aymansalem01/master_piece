@@ -47,8 +47,8 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/course', [UsersideController::class, 'course'])->name('course');
-Route::get('/vrs', [UsersideController::class, 'vr'])->name('vr');
-Route::get('/subject/{id}', [UsersideController::class, 'subject'])->name('subject');
+Route::get('/vrs', [UsersideController::class, 'vr'])->name('vr')->middleware('vr');
+Route::get('/subject/{id}', [UsersideController::class, 'subject'])->name('subject')->middleware('subscribe');
 Route::get('/videos/{id}', [UsersideController::class, 'video'])->name('show');
 Route::get('/video/{id}', [UsersideController::class, 'show'])->name('vid');
 
@@ -62,7 +62,7 @@ Route::get('/contact', [ContectController::class, 'contact'])->name('contact');
 
 
 
-Route::get('store', [PaymentController::class, 'store'])->name('store');
+Route::get('store', [PaymentController::class, 'store'])->name('store')->middleware('auth');
 Route::post('visa', [PaymentController::class, 'visa'])->name('payment_visa');
 Route::post('coupon_payment', [PaymentController::class, 'coupon'])->name('payment_coupon');
 

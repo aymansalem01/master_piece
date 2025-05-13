@@ -130,11 +130,6 @@
 </head>
 
 <body>
-    @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="login-container">
         <h1>Log In</h1>
         <form method="post" action="{{ route('login') }}">
@@ -157,5 +152,4 @@
         <p>Don't have an account? <a href="{{ route('sign') }}">Sign Up</a></p>
     </div>
 </body>
-
 </html>

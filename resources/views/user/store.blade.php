@@ -2,8 +2,8 @@
 @section('content')
     <style>
         .hello {
-            margin-top: 100px;
-            height: 50vh;
+            margin-top: 60px;
+            min-height: 50vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,6 +16,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 350px;
+
         }
 
         .btnn {
@@ -104,8 +105,9 @@
                         <p class="error">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <button type="submit" class="btn btnn btn-block mt-2">Submit Visa</button>
+                <div style="display:flex;justify-content:center">
+                <button type="submit" class="btn btnn btn-block mt-3">Submit Visa</button>
+            </div>
             </form>
 
 
@@ -119,7 +121,10 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                <button type="submit" class="btnn btn btn-block mt-2">Apply Coupon</button>
+                <div style="display:flex;justify-content:center">
+
+                <button type="submit" class="btnn btn btn-block mt-3">Apply Coupon</button>
+                </div>
             </form>
         </div>
     </div>
