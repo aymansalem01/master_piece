@@ -28,7 +28,7 @@
             <strong>Has Game:</strong>
             @if ($video->has_game)
                 <p class="text-success">Yes -
-                    <a href="{{ route('game.show', $video->id) }}" class="btn btn-sm btn-primary">
+                    <a href="{{$video->game_link}}" class="btn btn-sm btn-primary">
                         Go to Game
                     </a>
                 </p>

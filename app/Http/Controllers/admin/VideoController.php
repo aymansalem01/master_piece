@@ -23,20 +23,20 @@ class VideoController extends Controller
         }
 
         if ($request->filled('classe_id')) {
-            $query->whereHas('subject.classe', function($q) use ($request) {
+            $query->whereHas('subject.classe', function ($q) use ($request) {
                 $q->where('id', $request->classe_id);
             });
         }
         $videos = $query->paginate(9)->appends($request->query());
-        $subjects = Subject::get();
+        $subjects = Subject::with('classe')->get();
         $classes = Classe::get();
-        return view ('admin.video.video',['videos' => $videos,'subjects'=>$subjects,'classes'=>$classes]);
+        return view('admin.video.video', ['videos' => $videos, 'subjects' => $subjects, 'classes' => $classes]);
     }
 
     public function create()
     {
         $subjects = Subject::with('classe')->get();
-        return view('admin.video.create',['subjects'=>$subjects]);
+        return view('admin.video.create', ['subjects' => $subjects]);
     }
 
     public function store(Request $request)
@@ -46,14 +46,11 @@ class VideoController extends Controller
             'video_link' => 'required',
             'subject' => 'required',
         ]);
-        $has_game = 0;
-        if(isset($request->game_link)){
-            $has_game = 1;
-        }
+        $has_game = false;
         $game_link = null;
-        if(isset($request->game_link))
-        {
-            $game_link = $request->video_link;
+        if (isset($request->game_link)) {
+            $has_game = true;
+            $game_link = $request->game_link;
         }
         Video::create([
             'title' => $request->title,
@@ -68,13 +65,13 @@ class VideoController extends Controller
     public function show(string $id)
     {
         $video = Video::with('subject')->find($id);
-        return view('admin.video.show',['video' => $video]);
+        return view('admin.video.show', ['video' => $video]);
     }
     public function edit(string $id)
     {
         $video = Video::find($id);
         $subjects = Subject::with('classe')->get();
-        return view('admin.video.edit',['video' => $video, 'subjects' => $subjects]);
+        return view('admin.video.edit', ['video' => $video, 'subjects' => $subjects]);
     }
 
     public function update(Request $request, string $id)
@@ -85,13 +82,10 @@ class VideoController extends Controller
             'subject' => 'required',
         ]);
         $has_game = false;
-        if(isset($request->game_link)){
-            $has_game = true;
-        }
         $game_link = null;
-        if(isset($request->game_link))
-        {
-            $game_link = $request->video_link;
+        if (isset($request->game_link)) {
+            $has_game = true;
+            $game_link = $request->game_link;
         }
         Video::find($id)->update([
             'title' => $request->title,

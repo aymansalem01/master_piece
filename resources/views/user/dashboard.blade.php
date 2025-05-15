@@ -24,16 +24,16 @@
     <div class="par">
         <div class="main-content card" style="text-align: center;">
             <h4>Your Class<h4>
-            <p></p>
+            <h5> {{$subscribtion->classe->name}} </h5>
         </div>
 
         <div class="main-content card" style="text-align: center;">
             <h4>VR accesss<h4>
-                <p></p>
+                <p> {{$subscribtion->vr_access == 1 ? 'have access' : 'don\'t have access'}} </p>
         </div>
         <div class="main-content card" style="text-align: center;">
             <h4>End date<h4>
-                <p></p>
+                <p> {{$subscribtion->end_date}} </p>
         </div>
     </div>
     <div style="margin-bottom: 150px ">

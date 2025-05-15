@@ -12,7 +12,7 @@
                     <option value="">All Subjects</option>
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject->id }}" {{ request('subject_id') == $subject->id ? 'selected' : '' }}>
-                            {{ $subject->name }}</option>
+                            {{ $subject->name }} {{$subject->classe->name}}</option>
                     @endforeach
                 </select>
             </div>

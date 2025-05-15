@@ -6,14 +6,19 @@ use Closure;
 use Carbon\Carbon;
 use App\Models\Subscribtion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Subscribe
 {
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next ): Response
     {
         $user = auth()->user();
-        $classId = $request->route('classe') ?? $request->input('classe_id');
+        $classId = $request->route('id') ?? $request->input('id');
+        if(!Auth::check())
+        {
+            return redirect()->back()->with('error','you should login');
+        }
 
         $subscription = Subscribtion::where('user_id', $user->id)
             ->where('classe_id', $classId)
