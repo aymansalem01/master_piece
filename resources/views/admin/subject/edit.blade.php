@@ -93,10 +93,10 @@
 
             <div>
                 <label for="class">Class</label>
-                <select name="class" id="class" class="form-select mb-3" required>
+                <select name="class" id="class" class="form-select mb-3" required >
                     <option disabled>Select class</option>
                     @foreach($classes as $class)
-                        <option value="{{ $class->id }}" {{ $class->id == $subject->class_id ? 'selected' : '' }}>
+                        <option value="{{ $class->id }}" {{ $class->id == $subject->classe_id ? 'selected' : '' }}>
                             {{ $class->name }}
                         </option>
                     @endforeach

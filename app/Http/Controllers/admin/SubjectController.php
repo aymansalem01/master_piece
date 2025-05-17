@@ -67,7 +67,7 @@ class SubjectController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'mimes:jpg,jpeg,png|max:2048',
+            'image' => 'mimes:jpg,jpeg,png',
             'class' => 'required'
         ]);
         $subject = Subject::find($id);

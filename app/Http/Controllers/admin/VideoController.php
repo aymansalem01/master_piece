@@ -18,8 +18,10 @@ class VideoController extends Controller
             $query->where('title', 'LIKE', '%' . $request->title . '%');
         }
 
-        if ($request->filled('subject_id')) {
-            $query->where('subject_id', $request->subject_id);
+        if ($request->filled('subject')) {
+            $query->whereHas('subject', function ($q) use ($request) {
+                $q->where('name', $request->subject);
+            });
         }
 
         if ($request->filled('classe_id')) {

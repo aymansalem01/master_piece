@@ -8,12 +8,15 @@
                     value="{{ request('title') }}">
             </div>
             <div class="col-md-3">
-                <select name="subject_id" class="form-select mt-2">
+                <select name="subject" class="form-select mt-2">
                     <option value="">All Subjects</option>
-                    @foreach ($subjects as $subject)
-                        <option value="{{ $subject->id }}" {{ request('subject_id') == $subject->id ? 'selected' : '' }}>
-                            {{ $subject->name }} {{$subject->classe->name}}</option>
-                    @endforeach
+                    <option value="math" {{ request('subject') == 'math' ? 'selected' : '' }}>Math</option>
+                    <option value="science" {{ request('subject') == 'science' ? 'selected' : '' }}>Science</option>
+                    <option value="chemistry" {{ request('subject') == 'chemistry' ? 'selected' : '' }}>Chemistry
+                    </option>
+                    <option value="geology" {{ request('subject') == 'geology' ? 'selected' : '' }}>Geology</option>
+                    <option value="biology" {{ request('subject') == 'biology' ? 'selected' : '' }}>Biology</option>
+                    <option value="Physics" {{ request('subject') == 'Physics' ? 'selected' : '' }}>Physics</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -44,8 +47,7 @@
                         <p>{{ $video->subject->name }} </p>
                         <p>{{ $video->subject->classe->name }} </p>
                         <div class="action-buttons">
-                            <a href="{{ route('video.show', $video->id) }}"
-                                class="btn btn-sm btn-info me-2 iconsh">
+                            <a href="{{ route('video.show', $video->id) }}" class="btn btn-sm btn-info me-2 iconsh">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a href="{{ route('video.edit', $video->id) }}" class="edit-btn"><i

@@ -10,7 +10,7 @@ class ClassController extends Controller
 {
     public function index()
     {
-        $classes = Classe::paginate(6);
+        $classes = Classe::paginate(9);
         return view('admin.classe.classes',['classes' => $classes ]);
     }
 

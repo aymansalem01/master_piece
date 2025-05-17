@@ -12,7 +12,7 @@
                         @foreach ($classes as $class )
                         <div class="col-md-4 col-sm-6 mb-4 " >
                             <div class="review-card">
-                                    <img src="{{asset('images/'.$class->image)}}" alt="">
+
                                 <div>
                                 <h5 class="category-name">{{$class->name}}</h5>
                                 <p> <strong>{{$class->price}}$</strong> </p>
