@@ -47,7 +47,7 @@
                             <tbody>
                                 <tr>
                                     @foreach ($users as $user)
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role }}</td>

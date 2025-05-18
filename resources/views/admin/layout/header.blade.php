@@ -21,7 +21,7 @@
         <div class="sidebar" data-image="{{asset('assets1/img/sidebar-2.jpg')}}">
             <div class="sidebar-wrapper">
                 <div class="logo" >
-                        Creative Tim
+                        {{auth()->user()->name}}
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
@@ -108,24 +108,19 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Notification 1</a>
-                                    <a class="dropdown-item" href="#">Notification 2</a>
-                                    <a class="dropdown-item" href="#">Notification 3</a>
-                                    <a class="dropdown-item" href="#">Notification 4</a>
-                                    <a class="dropdown-item" href="#">Another notification</a>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="no-icon">Dropdown</span>
+                                    <span class="no-icon">profile</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <a class="dropdown-item" href="#">Separated link</a>
+                                    <a class="dropdown-item" href="#">   <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">Logout</button>
+                                            </form></a>
                                 </div>
                             </li>
                         </ul>

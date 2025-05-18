@@ -133,7 +133,7 @@
             <!-- Buttons -->
             <div class="d-flex justify-content-center gap-3">
                 @if (!empty($show->game_link))
-                    <a href="{{ $show->game_link }}" class="btn" style="background-color: #7a6ad8; color: white;">
+                    <a href="{{ $show->game_link }}" target="_blank" class="btn" style="background-color: #7a6ad8; color: white;">
                         Play Game
                     </a>
                 @endif

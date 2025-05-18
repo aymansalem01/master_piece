@@ -18,7 +18,7 @@
                             <tbody>
                                 @foreach ( $videos as $video  )
                                 <tr>
-                                    <td>{{$video->id}}  </td>
+                                    <td>{{$loop->iteration}}  </td>
                                     <td>{{$video->title}}</td>
                                     <td>{{$video->game_link}}</td>
                                 </tr>

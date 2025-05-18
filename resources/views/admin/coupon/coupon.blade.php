@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach ($coupons as $coupon )
                                 <tr>
-                                    <td>{{$coupon->id}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$coupon->code}}</td>
                                     <td>{{$coupon->classe->name}} </td>
                                     <td>{{$coupon->vr_access ? 'true' : 'false' }} </td>

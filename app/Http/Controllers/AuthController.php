@@ -50,7 +50,7 @@ class AuthController extends Controller
                 return redirect()->route('admin');
             }
             if ($user->role == 'parent') {
-                return redirect()->route('owner');
+                return redirect()->route('parent.home');
             }
         } else {
             return redirect()->back()->with(['password' => 'wrong password']);

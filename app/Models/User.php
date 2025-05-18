@@ -23,16 +23,29 @@ public function subscribtion()
     {
         return $this->hasMany(Payment::class);
     }
+    public function parent()
+    {
+        return $this->hasMany(UserRelation::class);
+    }
+    public function child()
+    {
+        return $this->hasMany(UserRelation::class);
+    }
 
     public  function visa_info()
     {
         return $this->hasMany(Visainfo::class);
     }
+    public function videos()
+    {
+        return $this->belongsToMany(Video::class,'progress')->withPivot('at');
+    }
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'phone_number'
     ];
 
     /**
